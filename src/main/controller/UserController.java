@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import user.dao.UserDao;
 import user.domain.User;
 import user.view.DeleteUserView;
-import user.view.NewUserInfoView;
 import user.view.UserListView;
 
 public class UserController {
@@ -18,15 +17,6 @@ public class UserController {
 	public UserController() {
 
 		this.userDao = new UserDao();
-
-	}
-	
-	
-	// 회원 가입 정보 요청
-	public void requestNewUserInfo() {
-
-		NewUserInfoView newUserInfoView = new NewUserInfoView();
-		newUserInfoView.newUserInfoView();
 
 	}
 
@@ -42,17 +32,6 @@ public class UserController {
 			MainController.AlertView("관리자 등록에 실패하였습니다");
 		}
 
-	}
-
-
-
-
-	
-	// 변경 정보로 베이터베이스 변경
-	public void requestUserUpdate(User updatedUser){
-		
-		userDao.userUpdate(updatedUser);
-		
 	}
 
 	
