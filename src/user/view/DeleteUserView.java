@@ -14,22 +14,8 @@ public class DeleteUserView {
 		
 	}
 	
-	// 회원탈퇴 확인요청
-	public boolean deleteUserView() {
-		
-		boolean isAgree = false; 
-		
-		System.out.println("정말 회원 탈퇴를 하시겠습니까? y or n");
-		char yesOrNo = keyboard.next().charAt(0);
-		
-		if(yesOrNo == 'y'){
-			isAgree = true;
-		}
-		
-		return isAgree;
-		
-	}
 
+	// 관리자가 선택한 회원 삭제
 	public int forceDeleteUserView() {
 		
 		System.out.println("삭제를 원하시는 회원의 번호를 입력하십시오");
