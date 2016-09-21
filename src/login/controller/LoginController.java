@@ -1,4 +1,4 @@
-package main.controller;
+package login.controller;
 
 import login.dao.LoginDao;
 import login.domain.Login;
@@ -27,7 +27,6 @@ public class LoginController {
 		
 	}
 	
-
 	
 	// 로그인 정보를 유저 데이터와 확인 후 로그인 처리
 	public void requestLogin(Login loginUser) {
@@ -41,7 +40,7 @@ public class LoginController {
 			
 		} else if(userOrAdmin == 0){
 			
-			MainController.AlertView("등록안된 관리자 입니다");
+			MainController.AlertView("등록되지 않은 관리자 입니다");
 			
 		}
 		
@@ -63,6 +62,16 @@ public class LoginController {
 			MainController.AlertView("로그아웃 실패");
 			
 		}
+		
+	}
+
+
+	// 로그인한 유저 정보 요청
+	public Login requestLoginUserInfo() {
+		
+		Login loginUser = loginDao.loginUser();
+		
+		return loginUser;
 		
 	}
 

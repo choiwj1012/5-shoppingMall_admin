@@ -1,11 +1,11 @@
 package main.controller;
 
 import admin.controller.AdminController;
-import main.controller.LoginController;
+import login.controller.LoginController;
 import main.view.AlertView;
 import main.view.MainMenuView;
-import main.controller.ProductController;
-import main.controller.UserController;
+import product.controller.ProductController;
+import user.controller.UserController;
 
 public class MainController {
 

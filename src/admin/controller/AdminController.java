@@ -10,9 +10,9 @@ import admin.view.AdminListView;
 import admin.view.AdminMainMenu;
 import admin.view.AdminSignUpView;
 import admin.view.AdminUpdateView;
-import admin.view.ProductManagementView;
-import admin.view.UserManagementView;
 import main.controller.MainController;
+import product.view.ProductManagementView;
+import user.view.UserManagementView;
 
 public class AdminController {
 

@@ -1,7 +1,8 @@
-package main.controller;
+package user.controller;
 
 import java.util.ArrayList;
 
+import main.controller.MainController;
 import user.dao.UserDao;
 import user.domain.User;
 import user.view.DeleteUserView;
