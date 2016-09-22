@@ -20,11 +20,10 @@ public class AdminDao {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
-		int nextAdminNumber = 0;
 		
 		try {
 			// 중복체크
-			String sql = "select * from ADMINLIST where adminId = ?";
+			String sql = "select * from ahop_master.ADMINLIST where adminId = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, newAdmin.getAdminId());
 			rs = pstmt.executeQuery();
@@ -32,26 +31,13 @@ public class AdminDao {
 			if(rs.next()){
 				MainController.AlertView("이미 아이디가 있습니다");
 			} else {
-				sql = "select max(adminNumber) + 1 as maxAdminNumber from ADMINLIST";
-				stmt = MainController.getDbController().getConnection().createStatement();
-				rs2 = stmt.executeQuery(sql);
 				
-				if(rs2.next()){
-					nextAdminNumber = rs2.getInt("maxAdminNumber");
-					if(rs2.wasNull()){
-						nextAdminNumber = 1;
-					}
-				}
-				
-				newAdmin.setAdminNumber(nextAdminNumber);
-				
-				sql = "insert into ADMINLIST values(?,?,?,?,?)";
+				sql = "insert into ADMINLIST values(adminlist_seq.nextval,?,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);		
-				pstmt2.setInt(1, newAdmin.getAdminNumber());
-				pstmt2.setString(2, newAdmin.getAdminId());
-				pstmt2.setString(3, newAdmin.getAdminPassword());
-				pstmt2.setString(4, newAdmin.getAdminName());
-				pstmt2.setInt(5, newAdmin.getAuthority());
+				pstmt2.setString(1, newAdmin.getAdminId());
+				pstmt2.setString(2, newAdmin.getAdminPassword());
+				pstmt2.setString(3, newAdmin.getAdminName());
+				pstmt2.setInt(4, newAdmin.getAuthority());
 				pstmt2.executeUpdate();
 				success = true;
 					

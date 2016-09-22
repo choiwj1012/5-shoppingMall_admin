@@ -13,7 +13,7 @@ public class DB_Controller {
 		try{
 			
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "system", "123456");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:orcl", "shop_master", "123456");
 			
 		} catch (ClassNotFoundException e) {
 			System.out.println("드라이버 로딩에 실패했습니다.");
