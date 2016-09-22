@@ -1,5 +1,3 @@
-package main.view;
-
 import main.controller.MainController;
 
 public class Main {

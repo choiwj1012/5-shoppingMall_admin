@@ -79,11 +79,10 @@ public class ProductDao {
 
 				sql = "insert into shop_master.PRODUCTLIST values(shop_master.productlist_seq.nextval,?,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
-				pstmt2.setInt(1, newProduct.getProductNumber());
-				pstmt2.setString(2, newProduct.getProductName());
-				pstmt2.setInt(3, newProduct.getProductPrice());
-				pstmt2.setString(4, newProduct.getProductComment());
-				pstmt2.setString(5, newProduct.getProductVendor());
+				pstmt2.setString(1, newProduct.getProductName());
+				pstmt2.setInt(2, newProduct.getProductPrice());
+				pstmt2.setString(3, newProduct.getProductComment());
+				pstmt2.setString(4, newProduct.getProductVendor());
 				pstmt2.executeUpdate();
 				success = true;
 
