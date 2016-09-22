@@ -21,7 +21,6 @@ public class UserDao {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
-		int maxUserNumber = 0;
 
 		try {
 
@@ -36,20 +35,7 @@ public class UserDao {
 
 			} else {
 
-				sql = "select max(userNumber)+1 as maxUserNumber from USERLIST";
-				stmt = MainController.getDbController().getConnection().createStatement();
-				rs2 = stmt.executeQuery(sql);
-
-				if(rs2.next()){
-					maxUserNumber = rs2.getInt(1);
-					if(rs2.wasNull()){
-						maxUserNumber = 1;
-					}
-				}
-
-				newUser.setUserNumber(maxUserNumber);
-
-				sql = "insert into USERLIST values(?,?,?,?)";
+				sql = "insert into USERLIST values(adminlist_seq.nextval,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
 				pstmt2.setInt(1, newUser.getUserNumber());
 				pstmt2.setString(2, newUser.getUserId());

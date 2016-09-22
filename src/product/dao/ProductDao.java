@@ -62,7 +62,6 @@ public class ProductDao {
 		PreparedStatement pstmt2 = null;
 		ResultSet rs = null;
 		ResultSet rs2 = null;
-		int maxProductNumber = 0;
 
 		try {
 
@@ -77,23 +76,8 @@ public class ProductDao {
 
 			} else {
 
-				// 같은 상품이름이 존재하지 않으면
-				sql = "select max(productNumber)+1 as maxProductNumber from PRODUCTLIST";
-				stmt = MainController.getDbController().getConnection().createStatement();
-				rs2 = stmt.executeQuery(sql);
 
-				if(rs2.next()){
-
-					maxProductNumber = rs2.getInt(1);
-
-					if(rs2.wasNull()){
-						maxProductNumber = 1;
-					}
-				}
-
-				newProduct.setProductNumber(maxProductNumber);
-
-				sql = "insert into PRODUCTLIST values(?,?,?,?,?)";
+				sql = "insert into PRODUCTLIST values(productlist_seq.nextval,?,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
 				pstmt2.setInt(1, newProduct.getProductNumber());
 				pstmt2.setString(2, newProduct.getProductName());
