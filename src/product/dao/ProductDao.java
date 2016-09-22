@@ -21,7 +21,7 @@ public class ProductDao {
 
 		try{
 			stmt = MainController.getDbController().getConnection().createStatement();
-			String sql = "select * from PRODUCTLIST";
+			String sql = "select * from shop_master.PRODUCTLIST";
 			rs = stmt.executeQuery(sql);
 
 			while(rs.next()){
@@ -65,7 +65,7 @@ public class ProductDao {
 
 		try {
 
-			String sql = "select * from PRODUCTLIST where productName = ?";
+			String sql = "select * from shop_master.PRODUCTLIST where productName = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, newProduct.getProductName());
 			rs = pstmt.executeQuery();
@@ -77,7 +77,7 @@ public class ProductDao {
 			} else {
 
 
-				sql = "insert into PRODUCTLIST values(productlist_seq.nextval,?,?,?,?)";
+				sql = "insert into shop_master.PRODUCTLIST values(shop_master.productlist_seq.nextval,?,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
 				pstmt2.setInt(1, newProduct.getProductNumber());
 				pstmt2.setString(2, newProduct.getProductName());
@@ -118,7 +118,7 @@ public class ProductDao {
 
 		try {
 
-			String sql = "select * from PRODUCTLIST where productNumber = ?";
+			String sql = "select * from shop_master.PRODUCTLIST where productNumber = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, selectedNum);
 			rs = pstmt.executeQuery();
@@ -137,7 +137,7 @@ public class ProductDao {
 				
 			}
 
-			sql = "update PRODUCTLIST set productName = ?, productPrice = ?, productComment = ?, productVendor = ? where productNumber = ?";
+			sql = "update shop_master.PRODUCTLIST set productName = ?, productPrice = ?, productComment = ?, productVendor = ? where productNumber = ?";
 			pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
 
 			if(updateProduct.getProductName() != null){
@@ -194,7 +194,7 @@ public class ProductDao {
 		
 		try {
 			
-			String sql = "delete PRODUCTLIST where productNumber = ?";
+			String sql = "delete shop_master.PRODUCTLIST where productNumber = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, deleteProductNumber);
 			pstmt.executeUpdate();

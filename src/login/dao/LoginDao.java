@@ -29,7 +29,7 @@ public class LoginDao {
 		try {
 			
 			// 회원인지 확인
-			sql = "select * from USERLIST where userId = ? and userPassword = ?";	
+			sql = "select * from shop_master.USERLIST where userId = ? and userPassword = ?";	
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, loginUser.getLoginUserId());
 			pstmt.setString(2, loginUser.getLoginUserPassword());
@@ -45,7 +45,7 @@ public class LoginDao {
 			pstmt.close();
 			
 			// 관리자인지 확인
-			sql = "select * from ADMINLIST where adminId = ? and adminPassword = ?";
+			sql = "select * from shop_master.ADMINLIST where adminId = ? and adminPassword = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, loginUser.getLoginUserId());
 			pstmt.setString(2, loginUser.getLoginUserPassword());

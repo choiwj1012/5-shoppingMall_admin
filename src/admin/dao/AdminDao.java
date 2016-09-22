@@ -23,7 +23,7 @@ public class AdminDao {
 		
 		try {
 			// 중복체크
-			String sql = "select * from ahop_master.ADMINLIST where adminId = ?";
+			String sql = "select * from shop_master.ADMINLIST where adminId = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setString(1, newAdmin.getAdminId());
 			rs = pstmt.executeQuery();
@@ -32,7 +32,7 @@ public class AdminDao {
 				MainController.AlertView("이미 아이디가 있습니다");
 			} else {
 				
-				sql = "insert into ADMINLIST values(adminlist_seq.nextval,?,?,?,?)";
+				sql = "insert into shop_master.ADMINLIST values(shop_master.adminlist_seq.nextval,?,?,?,?)";
 				pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);		
 				pstmt2.setString(1, newAdmin.getAdminId());
 				pstmt2.setString(2, newAdmin.getAdminPassword());
@@ -71,7 +71,7 @@ public class AdminDao {
 		
 		try {
 			
-			String sql = "select * from ADMINLIST";	
+			String sql = "select * from shop_master.ADMINLIST";	
 			stmt = MainController.getDbController().getConnection().createStatement();
 			rs = stmt.executeQuery(sql);
 			
@@ -115,7 +115,7 @@ public class AdminDao {
 			
 		try {
 			
-			String sql = "select * from ADMINLIST where adminNumber = ?";	
+			String sql = "select * from shop_master.ADMINLIST where adminNumber = ?";	
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, selectedAdminNumber);
 			rs = pstmt.executeQuery();
@@ -161,7 +161,7 @@ public class AdminDao {
 		try {
 			
 			Admin admin = new Admin();
-			String sql = "select * from ADMINLIST where adminNumber = ?";
+			String sql = "select * from shop_master.ADMINLIST where adminNumber = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, updatedAdmin.getAdminNumber());
 			rs = pstmt.executeQuery();
@@ -176,7 +176,7 @@ public class AdminDao {
 				
 			}
 			
-			sql = "update ADMINLIST set adminPassword = ?, authority = ? where adminNumber = ?";
+			sql = "update shop_master.ADMINLIST set adminPassword = ?, authority = ? where adminNumber = ?";
 			pstmt2 = MainController.getDbController().getConnection().prepareStatement(sql);
 			
 			if(updatedAdmin.getAdminPassword() != null){
@@ -223,7 +223,7 @@ public class AdminDao {
 		
 		try {
 			
-			String sql = "delete ADMINLIST where adminNumber = ?";
+			String sql = "delete shop_master.ADMINLIST where adminNumber = ?";
 			pstmt = MainController.getDbController().getConnection().prepareStatement(sql);
 			pstmt.setInt(1, selectedAdminNumber);
 			pstmt.executeUpdate();
